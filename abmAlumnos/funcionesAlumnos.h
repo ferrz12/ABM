@@ -12,17 +12,18 @@ typedef struct
 
 } eAlumno;
 
-int menuOpciones();
-
-void inicializarArrayIlogicamenteNota(eAlumno[], int);
-int buscarLibre(eAlumno[], int, int);
+void inicializarEstadoArrayIlogicamente(eAlumno[], int);
 
 void cargarListadoDeAlumnosSecuencialmente(eAlumno[], int);
 int cargarAlumnosPorEspacioLibre(eAlumno[], int);
+int buscarAlumnoLibre(eAlumno[], int, int);
+int buscarLegajoLibre(eAlumno[], int, int);
+
 void ordenarPorNombre(eAlumno[], int);
 void alumnoNombreConP(eAlumno[], int);
 void alumnosAprobados(eAlumno[], int);
 void alumnosNotaMasAlta(eAlumno [], int);
+void modificarNotaDeAlumnoSegunLegajo(eAlumno[], int);
 
 void mostrarListadoDeAlumnos(eAlumno[], int);
 void mostrarAlumno(eAlumno);

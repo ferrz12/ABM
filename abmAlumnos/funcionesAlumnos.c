@@ -7,7 +7,6 @@ void mostrarAlumno(eAlumno unAlumno)
 {
     printf("%d--%s--%f--%d\n", unAlumno.legajo, unAlumno.nombre, unAlumno.altura, unAlumno.nota);
 
-
 }
 
 eAlumno cargarAlumno()
@@ -103,30 +102,8 @@ void alumnoNombreConP(eAlumno listado[], int tam)
 
 }
 
-int menuOpciones()
-{
 
-    int opcion;
-
-    printf("1-Alta de alumnos \n");
-    printf("2-Ver listado de alumnos \n");
-    printf("3-Ordenar alfabeticamente \n");
-    printf("4-Alumnos aprobados \n");
-    printf("5-Alumnos cuyo nombre comienza con P \n");
-    printf("6-Alumno/s con nota mas alta \n");
-    printf("7-Modificar una nota por legajo: \n");
-    printf("8-Salir \n");
-    printf("Ingrese opcion: \n");
-
-    scanf("%d", &opcion);
-
-    system("cls");
-
-    return opcion;
-
-}
-
-void inicializarArrayIlogicamenteNota(eAlumno listado[], int tam)
+void inicializarEstadoArrayIlogicamente(eAlumno listado[], int tam)
 {
 
     int i;
@@ -155,13 +132,13 @@ void alumnosAprobados(eAlumno listado[], int tam)
 
 }
 
-int buscarLibre(eAlumno listado[], int tam, int ilogico)
+int buscarAlumnoLibre(eAlumno listado[], int tam, int estado)
 {
     int index = -1;
     int i;
     for(i = 0; i < tam; i++)
     {
-        if(listado[i].estado == ilogico)
+        if(listado[i].estado == estado)
         {
             index = i;
             break;
@@ -170,8 +147,6 @@ int buscarLibre(eAlumno listado[], int tam, int ilogico)
 
     return index;
 }
-
-
 
 
 void alumnosNotaMasAlta(eAlumno listado[], int tam)
@@ -198,23 +173,71 @@ void alumnosNotaMasAlta(eAlumno listado[], int tam)
 
 }
 
-int cargarAlumnosEspacioPorLibre(eAlumno listado[], int tam)
+int cargarAlumnosPorEspacioLibre(eAlumno listado[], int tam)
 {
-    int i;
     int bandera;
 
-    bandera = buscarLibre(listado, tam, VACIO);
+    bandera = buscarAlumnoLibre(listado, tam, VACIO);
 
     if(bandera != -1)
     {
-         listado[bandera] = cargarAlumno();
-         listado[bandera].estado = OCUPADO;
+        listado[bandera] = cargarAlumno();
+        listado[bandera].estado = OCUPADO;
     }
 
     return bandera;
 
+}
+
+void modificarNotaDeAlumnoSegunLegajo(eAlumno listado[], int tam)
+{
+
+    int bandera = 0;
+    int auxInt;
+
+    printf("Ingrese un legajo: "); //funcion para hacer despues
+    scanf("%d", &auxInt);
+
+    bandera = buscarLegajoLibre(listado, tam, VACIO);
+
+    int i;
+    for(i=0; i<tam; i++)
+    {
+
+        if(bandera != VACIO && auxInt == listado[i].legajo)
+        {
+            printf("Ingrese la nueva nota: ");
+            scanf("%d", &listado[i].nota);
+            bandera = 1;
+        }
+
+    }
+
+    if(bandera==0)
+    {
+        printf("Legajo inexistente");
+    }
+}
+
+int buscarLegajoLibre(eAlumno listado[], int tam, int estado){
+
+    int legajo = -1;
+    int i;
+    for(i = 0; i < tam; i++)
+    {
+        if(listado[i].legajo == estado)
+        {
+            legajo = i;
+            break;
+        }
+    }
+
+    return legajo;
 
 }
+
+
+
 
 
 

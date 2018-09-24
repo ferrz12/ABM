@@ -1,17 +1,15 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "funcionesAlumnos.h"
+#include "funcionesExtra.h"
 #define T 3
 
 int main()
 {
     eAlumno listado[T];
     int opcion;
-    int cargo;
-    int auxInt;
-    int i;
 
-    inicializarArrayIlogicamenteNota(listado, T);
+    inicializarEstadoArrayIlogicamente(listado, T);
 
     do
     {
@@ -23,7 +21,7 @@ int main()
         case 1:
 
 
-            if(cargarAlumnosEspacioLibre(listado, T)!=-1)
+            if(cargarAlumnosPorEspacioLibre(listado, T)!=-1)
             {
                 printf("Carga satisfactoria");
             }
@@ -48,27 +46,7 @@ int main()
             alumnosNotaMasAlta(listado, T);
             break;
         case 7:
-            cargo = 0;
-            printf("Ingrese un legajo: ");
-            scanf("%d", &auxInt);
 
-            for(i=0; i<T; i++)
-            {
-
-                if(listado[i].estado!=VACIO &&
-                        auxInt == listado[i].legajo)
-                {
-                    printf("Ingrese la nueva nota: ");
-                    scanf("%d", &listado[i].nota);
-                    cargo = 1;
-                }
-
-            }
-
-            if(cargo==0)
-            {
-                printf("Legajo inexistente");
-            }
 
 
             /*
