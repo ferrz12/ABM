@@ -35,6 +35,10 @@
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="funcionesAlumnos.h" />
+		<Unit filename="funcionesExtra.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="funcionesExtra.h" />
 		<Unit filename="main.c">
 			<Option compilerVar="CC" />
 		</Unit>
