@@ -1,9 +1,14 @@
+#define VACIO -1
+#define OCUPADO 1
+#define BORRADO 0
+
 typedef struct
 {
     int legajo;
     char nombre[50];
     float altura;
     int nota;
+    int estado;
 
 } eAlumno;
 
@@ -13,7 +18,7 @@ void inicializarArrayIlogicamenteNota(eAlumno[], int);
 int buscarLibre(eAlumno[], int, int);
 
 void cargarListadoDeAlumnosSecuencialmente(eAlumno[], int);
-void cargarAlumnosEspacioLibre(eAlumno[], int);
+int cargarAlumnosPorEspacioLibre(eAlumno[], int);
 void ordenarPorNombre(eAlumno[], int);
 void alumnoNombreConP(eAlumno[], int);
 void alumnosAprobados(eAlumno[], int);

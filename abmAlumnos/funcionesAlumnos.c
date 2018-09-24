@@ -7,8 +7,7 @@ void mostrarAlumno(eAlumno unAlumno)
 {
     printf("%d--%s--%f--%d\n", unAlumno.legajo, unAlumno.nombre, unAlumno.altura, unAlumno.nota);
 
-    system("pause");
-    system("cls");
+
 }
 
 eAlumno cargarAlumno()
@@ -51,7 +50,8 @@ void mostrarListadoDeAlumnos(eAlumno listado[], int tam)
     int i;
     for(i = 0; i < tam; i++)
     {
-        mostrarAlumno(listado[i]);
+        if(listado[i].estado != VACIO)
+            mostrarAlumno(listado[i]);
     }
 
     system("pause");
@@ -132,7 +132,7 @@ void inicializarArrayIlogicamenteNota(eAlumno listado[], int tam)
     int i;
     for(i = 0; i < tam; i++)
     {
-        listado[i].nota = -1;
+        listado[i].estado = -1;
     }
 
 }
@@ -154,14 +154,14 @@ void alumnosAprobados(eAlumno listado[], int tam)
 
 
 }
-/*
+
 int buscarLibre(eAlumno listado[], int tam, int ilogico)
 {
     int index = -1;
     int i;
     for(i = 0; i < tam; i++)
     {
-        if(listado[i] == ilogico)
+        if(listado[i].estado == ilogico)
         {
             index = i;
             break;
@@ -170,7 +170,7 @@ int buscarLibre(eAlumno listado[], int tam, int ilogico)
 
     return index;
 }
-*/
+
 
 
 
@@ -198,24 +198,20 @@ void alumnosNotaMasAlta(eAlumno listado[], int tam)
 
 }
 
-void cargarAlumnosEspacioLibre(eAlumno listado[], int tam){
-
-    inicializarArrayIlogicamenteNota(listado, tam);
-
+int cargarAlumnosEspacioPorLibre(eAlumno listado[], int tam)
+{
     int i;
-    int bandera = 0;
-    for(i = 0; i < tam; i++){
+    int bandera;
 
-        if(listado[i].nota == -1){
-            cargarAlumno();
-            bandera = 1;
-            break;
-    }
+    bandera = buscarLibre(listado, tam, VACIO);
+
+    if(bandera != -1)
+    {
+         listado[bandera] = cargarAlumno();
+         listado[bandera].estado = OCUPADO;
     }
 
-    if(bandera == 0){
-        printf("No hay mas espacio");
-    }
+    return bandera;
 
 
 }
