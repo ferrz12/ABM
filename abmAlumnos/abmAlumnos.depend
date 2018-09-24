@@ -12,3 +12,16 @@
 	<string.h>
 	"funcionesAlumnos.h"
 
+1537768662 source:c:\users\fernando\desktop\abm\abmalumnos\funcionesalumnos.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"funcionesAlumnos.h"
+
+1537768669 c:\users\fernando\desktop\abm\abmalumnos\funcionesalumnos.h
+
+1537768716 source:c:\users\fernando\desktop\abm\abmalumnos\main.c
+	<stdio.h>
+	<stdlib.h>
+	"funcionesAlumnos.h"
+

@@ -8,15 +8,13 @@ int main()
     eAlumno listado[T];
     int opcion;
 
-    inicializarArrayIlogicamente(listado, T);
-
     do{
 
         opcion = menuOpciones();
 
         switch(opcion){
             case 1:
-                cargarListadoDeAlumnos(listado, T);
+                cargarAlumnosEspacioLibre(listado, T);
                 break;
             case 2:
                 mostrarListadoDeAlumnos(listado, T);
@@ -25,11 +23,13 @@ int main()
                 ordenarPorNombre(listado, T);
                 break;
             case 4:
-
+                alumnosAprobados(listado, T);
                 break;
             case 5:
+                alumnoNombreConP(listado, T);
                 break;
             case 6:
+                alumnosNotaMasAlta(listado, T);
                 break;
             case 7:
                 break;
